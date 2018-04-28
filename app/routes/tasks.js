@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../models');
 
-router.post('/test', (req, res) => {
-  console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
-  console.log(req.body);
-  let title = req.boby.todoTitle;
+router.post('/', (req, res) => {
+  let title = req.body.todoTitle;
   let description = req.body.todoDetail;
   let userId = req.body.userId;
   let params = {
@@ -18,21 +16,18 @@ router.post('/test', (req, res) => {
 
   createTask(params)
   .then((response) => {
-    console.log(response);
     res.json({
+      status: 200,
       message: 'this is tasks api',
     });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.json({
+      status: 500,
+      message: 'creating task data err'
+    });
   });
-  // .catch((err) => {
-  //   console.log(err);
-  //   res.json({
-
-  //   });
-  // });
-
-  // res.json({
-  //   message: 'this is tasks api',
-  // });
 
   async function createTask(params) {
     return await db.Task.create(params);
