@@ -12,7 +12,7 @@ router.post('/login', (req, res) => {
 router.post('/sign-up', (req, res) => {
   console.log('222222222222222222222222222');
   res.json({
-    message: 'json from users sign-up controller';
+    message: 'json from users sign-up controller'
   });
 });
 
