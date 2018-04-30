@@ -6,8 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     is_completed: DataTypes.BOOLEAN,
     is_deleted: DataTypes.BOOLEAN
-  }, {});
+  }, { underscored: true });
+
   Task.associate = function(models) {
+    Task.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      targetKey: 'id',
+    });
   };
   return Task;
 };

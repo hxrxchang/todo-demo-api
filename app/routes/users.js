@@ -3,7 +3,8 @@ const router = express.Router();
 const db = require('../../models');
 
 router.post('/login', (req, res) => {
-  console.log('111111111111111111111111111');
+  console.log('1111111111111111111111111');
+  console.log(req.body);
   res.json({
     message: 'json from users login controller'
   });
