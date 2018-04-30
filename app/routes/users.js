@@ -11,10 +11,33 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/sign-up', (req, res) => {
-  console.log('222222222222222222222222222');
-  res.json({
-    message: 'json from users sign-up controller'
+  let userName = req.body.userName;
+  let password = req.body.password;
+  let condition = {
+    where: {
+      name: userName,
+      password,
+    },
+  };
+
+  getUserData(condition)
+  .then((response) => {
+    console.log(response);
+    res.json({
+      message: 'json from users sign-up controller'
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+    console.log('ここまできてるよ');
+    res.json({
+      message: error
+    });
   });
+
+  async function getUserData(condition) {
+    return await db.User.findAll(condition);
+  }
 });
 
 module.exports = router;
