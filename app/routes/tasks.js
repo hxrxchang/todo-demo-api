@@ -29,10 +29,10 @@ router.post('/create', (req, res) => {
       content: error
     });
   });
-
-  async function createTask(params) {
-    return await db.Task.create(params);
-  }
 });
+
+async function createTask(params) {
+  return await db.Task.create(params);
+}
 
 module.exports = router;

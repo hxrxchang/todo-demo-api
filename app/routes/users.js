@@ -14,14 +14,23 @@ router.post('/login', (req, res) => {
 
   getUserData(condition)
   .then((response) => {
-    console.log(response);
-    res.json({
-      message: 'success getting user',
-      content: response
-    });
+    if (response.length) {
+      res.json({
+        status: 200,
+        message: 'success getting user',
+        content: response
+      });
+    } else {
+      res.json({
+        status: 200,
+        message: 'user is not found',
+        content: response
+      });
+    }
   })
   .catch((error) =>{
     res.json({
+      status: 500,
       message: 'fail getting user',
       content: err
     });
@@ -34,13 +43,23 @@ router.post('/sign-up', (req, res) => {
 
   createUserData(userName, password)
   .then((response) => {
-    res.json({
-      message: 'success creating user',
-      content: response
-    });
+    if (response) {
+      res.json({
+        status: 200,
+        message: 'success creating user',
+        content: response
+      });
+    } else {
+      res.json({
+        status: 200,
+        message: 'user is already registered',
+        content: response
+      });
+    }
   })
   .catch((error) => {
     res.json({
+      status: 500,
       message: 'fail creating user',
       content: error
     });
