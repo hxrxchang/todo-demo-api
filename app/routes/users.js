@@ -5,6 +5,9 @@ const db = require('../../models');
 router.post('/login', (req, res) => {
   let userName = req.body.userName;
   let password = req.body.password;
+  if (!(userName && password)) {
+    throw new Error();
+  }
   let condition = {
     where: {
       name: userName,
@@ -40,6 +43,9 @@ router.post('/login', (req, res) => {
 router.post('/sign-up', (req, res) => {
   let userName = req.body.userName;
   let password = req.body.password;
+  if (!(userName && password)) {
+    throw new Error();
+  }
 
   createUserData(userName, password)
   .then((response) => {
