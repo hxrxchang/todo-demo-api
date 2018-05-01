@@ -6,7 +6,8 @@ router.post('/', (req, res) => {
   let userId = req.body.userId;
   let condition = {
     where: {
-      user_id: userId
+      user_id: userId,
+      is_deleted: false
     }
   };
   db.Task.findAll(condition)
@@ -59,7 +60,7 @@ router.post('/create', (req, res) => {
 });
 
 router.post('/edit', (req, res) => {
-  console.log('2222222222222222222222222222');
+
 });
 
 router.post('/complete', (req, res) => {
@@ -67,7 +68,30 @@ router.post('/complete', (req, res) => {
 });
 
 router.post('/delete', (req, res) => {
-  console.log('44444444444444444444444');
+  let taskId = req.body.taskId;
+  if (!taskId) {
+    throw new Error();
+  }
+  let params = { is_deleted: true };
+  let condition = {
+    where: { id: taskId }
+  };
+
+  db.Task.update(params, condition)
+  .then((response) => {
+    res.json({
+      status: 200,
+      message: 'success deleting task',
+      content: response
+    });
+  })
+  .catch((error) => {
+    res.json({
+      status: 500,
+      message: 'fail deleting task',
+      content: error
+    });
+  });
 });
 
 async function createTask(params) {
