@@ -5,12 +5,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extend: true}));
 app.use(bodyParser.json());
 
-const allowCrossDomain = (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  next();
+let ENV = app.get('env');
+if (ENV === 'development') {
+  const allowCrossDomain = (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    next();
+  }
+  app.use(allowCrossDomain);
 }
-app.use(allowCrossDomain);
 
 let port = process.env.PORT || 3000;
 
