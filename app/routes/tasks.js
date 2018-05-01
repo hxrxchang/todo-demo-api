@@ -42,7 +42,7 @@ router.post('/create', (req, res) => {
     is_deleted: false
   };
 
-  createTask(params)
+  db.Task.create(params)
   .then((response) => {
     res.json({
       status: 200,
@@ -144,9 +144,5 @@ router.post('/delete', (req, res) => {
     });
   });
 });
-
-async function createTask(params) {
-  return await db.Task.create(params);
-}
 
 module.exports = router;
