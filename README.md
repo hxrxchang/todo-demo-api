@@ -6,7 +6,7 @@
 - $ npm i
 
 ## create db
-- mysql -u root < config/db.sql 
+- $ mysql -u root < config/db.sql 
 
 ## running migration
 - $ sequelize db:migrate
