@@ -4,13 +4,13 @@ const db = require('../../models');
 
 router.post('/', (req, res) => {
   let userId = req.body.userId;
-  let requestCompletedTask = req.query.requestCompletedTask;
+  let requestCompletedTask = req.body.requestCompletedTask;
   let requestDeletedTask = req.body.requestDeletedTask;
   let condition = {
     where: {
       user_id: userId,
       is_completed: false,
-      is_deleted: false
+      is_deleted: false,
     }
   };
 
