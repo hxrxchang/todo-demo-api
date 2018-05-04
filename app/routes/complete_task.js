@@ -8,9 +8,13 @@ router.post('/', (req, res) => {
   if (!taskId) {
     throw new Error();
   }
-  let params = { is_completed: true };
+  let params = {};
 
-  if (!isCompleted) params.is_completed = false;
+  if (isCompleted === 'true') {
+    params.is_completed = false;
+  } else {
+    params.is_completed = true;
+  }
 
   let condition = {
     where: { id: taskId }
