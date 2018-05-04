@@ -4,10 +4,14 @@ const db = require('../../models');
 
 router.post('/', (req, res) => {
   let taskId = req.body.taskId;
+  let isCompleted = req.body.isCompleted;
   if (!taskId) {
     throw new Error();
   }
   let params = { is_completed: true };
+
+  if (isCompleted) params.is_completed = false;
+
   let condition = {
     where: { id: taskId }
   };
