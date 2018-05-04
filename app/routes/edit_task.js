@@ -7,8 +7,8 @@ router.post('/', (req, res) => {
   if (!taskId) {
     throw new Error();
   }
-  let title = req.body.title;
-  let description = req.body.description;
+  let title = req.body.newTitle;
+  let description = req.body.newDetail;
   let params = {};
   if (title) params.title = title;
   if (description) params.description = description;
