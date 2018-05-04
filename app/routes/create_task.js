@@ -6,7 +6,7 @@ router.post('/', (req, res) => {
   let title = req.body.todoTitle;
   let description = req.body.todoDetail;
   let userId = req.body.userId;
-  if (!(description && userId)) {
+  if (!(title && userId)) {
     throw new Error();
   }
   let params = {
