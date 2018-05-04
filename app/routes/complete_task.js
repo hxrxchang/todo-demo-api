@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
   }
   let params = { is_completed: true };
 
-  if (isCompleted) params.is_completed = false;
+  if (!isCompleted) params.is_completed = false;
 
   let condition = {
     where: { id: taskId }
