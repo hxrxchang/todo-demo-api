@@ -4,12 +4,16 @@ const db = require('../../models');
 
 router.post('/', (req, res) => {
   let userId = req.body.userId;
+  let ASC_or_DESC = req.body.ASC_or_DESC;
   let condition = {
     where: {
       user_id: userId,
       is_stared: true,
       is_deleted: false,
-    }
+    },
+    order: [
+      ['created_at', ASC_or_DESC]
+    ]
   };
 
   db.Task.findAll(condition)
