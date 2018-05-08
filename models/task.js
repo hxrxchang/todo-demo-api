@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     is_completed: DataTypes.BOOLEAN,
     is_deleted: DataTypes.BOOLEAN,
     is_stared: DataTypes.BOOLEAN,
+    deadline: DataTypes.DATE,
   }, { underscored: true });
 
   Task.associate = function(models) {
