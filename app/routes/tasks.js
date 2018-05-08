@@ -6,7 +6,6 @@ router.post('/', (req, res) => {
   let userId = req.body.userId;
   let ASC_or_DESC = req.body.ASC_or_DESC;
   let requestNearDeadlineTask = req.body.requestDeadline;
-  console.log(requestNearDeadlineTask);
   let condition = {
     where: {
       user_id: userId,
