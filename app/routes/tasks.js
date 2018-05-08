@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     ]
   };
   if (requestNearDeadlineTask !== 'false') {
-    condition.order = [['deadline', 'DESC']];
+    condition.order = [['deadline', 'ASC']];
   }
 
   db.Task.findAll(condition)
