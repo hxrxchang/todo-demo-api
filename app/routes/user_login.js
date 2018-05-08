@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     }
   };
 
-  getUserData(condition)
+  db.User.findAll(condition)
   .then((response) => {
     if (response.length) {
       res.json({
@@ -39,9 +39,5 @@ router.post('/', (req, res) => {
     });
   });
 });
-
-async function getUserData(condition) {
-  return await db.User.findAll(condition);
-}
 
 module.exports = router;
