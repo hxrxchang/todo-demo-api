@@ -5,15 +5,20 @@ const db = require('../../models');
 router.post('/', (req, res) => {
   let userId = req.body.userId;
   let ASC_or_DESC = req.body.ASC_or_DESC;
+  let requestNearDeadlineTask = req.body.requestDeadline;
+  console.log(requestNearDeadlineTask);
   let condition = {
     where: {
       user_id: userId,
       is_deleted: false,
     },
     order: [
-      ['created_at', ASC_or_DESC]
+      ['created_at', ASC_or_DESC],
     ]
   };
+  if (requestNearDeadlineTask !== 'false') {
+    condition.order = [['deadline', 'DESC']];
+  }
 
   db.Task.findAll(condition)
   .then((response) => {
