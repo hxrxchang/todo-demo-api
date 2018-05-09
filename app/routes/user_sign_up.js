@@ -38,7 +38,6 @@ async function createUserData(userName, password) {
   let condition = {
     where: {
       name: userName,
-      password
     }
   };
 
