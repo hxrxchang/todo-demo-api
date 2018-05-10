@@ -6,14 +6,14 @@ app.use(bodyParser.urlencoded({ extend: true}));
 app.use(bodyParser.json());
 
 let ENV = app.get('env');
-if (ENV === 'development') {
+// if (ENV === 'development') {
   const allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     next();
   }
   app.use(allowCrossDomain);
-}
+// }
 
 let port = process.env.PORT || 3000;
 
