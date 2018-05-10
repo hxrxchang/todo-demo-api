@@ -19,6 +19,6 @@
     "database": "todo_list_production",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "mysql2://bcbafe3c741580:113fee2f@us-cdbr-iron-east-04.cleardb.net/heroku_c4a675564cf0c0d?reconnect=true"
   }
 }
