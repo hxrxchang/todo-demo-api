@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../../models');
 
 router.post('/', (req, res) => {
-  console.log('111111111111111111111111111');
   let taskId = req.body.taskId;
   favoriteTask(taskId)
   .then((response) => {
