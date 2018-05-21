@@ -22,6 +22,6 @@ app.use('/api/tasks/edit', require('./routes/edit_task.js'));
 app.use('/api/tasks/delete', require('./routes/delete_task.js'));
 app.use('/api/tasks/complete', require('./routes/complete_task.js'));
 app.use('/api/tasks/star', require('./routes/favorite_tasks.js'));
-app.use('/tasks/star/get', require('./routes/get_stared_tasks.js'));
+app.use('/api/tasks/star/get', require('./routes/get_stared_tasks.js'));
 
 module.exports = app;
