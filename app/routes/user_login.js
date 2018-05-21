@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
     res.json({
       status: 500,
       message: 'fail getting user',
-      content: err
+      content: error
     });
   });
 });
