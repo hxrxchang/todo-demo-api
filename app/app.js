@@ -15,7 +15,4 @@ app.use(allowCrossDomain);
 const router = require('./routes/');
 app.use('/api/', router);
 
-let port = process.env.PORT || 3000;
-
-app.listen(port);
-console.log('listen on port' + port);
+module.exports = app;
