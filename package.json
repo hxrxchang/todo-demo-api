@@ -18,6 +18,5 @@
     "nodemon": "^1.17.3",
     "sequelize": "^4.37.6",
     "sequelize-cli": "^4.0.0",
-    "ysql": "0.0.6"
   }
 }
