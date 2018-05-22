@@ -13,7 +13,6 @@ const allowCrossDomain = (req, res, next) => {
 app.use(allowCrossDomain);
 
 // ルーティング
-// const router = require('./routes/');
 app.use('/api/users/login', require('./routes/user_login.js'));
 app.use('/api/users/sign-up', require('./routes/user_sign_up'));
 app.use('/api/tasks', require('./routes/tasks.js'));
