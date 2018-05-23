@@ -5,6 +5,7 @@ const db = require('../../models');
 router.post('/', (req, res) => {
   let userName = req.body.userName;
   let password = req.body.password;
+  // リクエストにuserNameとpasswordは必須
   if (!(userName && password)) {
     throw new Error();
   }

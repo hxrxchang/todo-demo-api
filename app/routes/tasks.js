@@ -4,7 +4,9 @@ const db = require('../../models');
 
 router.post('/', (req, res) => {
   let userId = req.body.userId;
-  let ASC_or_DESC = req.body.ASC_or_DESC;
+  // 昇順降順
+  let orderBy = req.body.ASC_or_DESC;
+  // 期限が近い順に並べ換えるフラグ
   let requestNearDeadlineTask = req.body.requestDeadline;
   let condition = {
     where: {
@@ -12,7 +14,7 @@ router.post('/', (req, res) => {
       is_deleted: false,
     },
     order: [
-      ['created_at', ASC_or_DESC],
+      ['created_at', orderBy],
     ]
   };
   if (requestNearDeadlineTask !== 'false') {

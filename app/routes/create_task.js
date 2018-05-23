@@ -8,6 +8,7 @@ router.post('/', (req, res) => {
   let userId = req.body.userId;
   let deadline = req.body.todoDeadline;
 
+  // タイトルとusreIdのみ必須。それ以外はなくても大丈夫
   if (!(title && userId)) {
     throw new Error();
   }

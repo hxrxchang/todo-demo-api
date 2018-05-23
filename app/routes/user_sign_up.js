@@ -5,6 +5,8 @@ const db = require('../../models');
 router.post('/', (req, res) => {
   let userName = req.body.userName;
   let password = req.body.password;
+
+  // リクエストにuserNameとpasswordは必須
   if (!(userName && password)) {
     throw new Error();
   }
@@ -41,8 +43,9 @@ async function createUserData(userName, password) {
     }
   };
 
-  let userData = await getUserData(condition);
+  let userData = await db.User.findAll(condition);
 
+  // ユーザーデータがなければ、ユーザーを作成。あればnullを返す。
   if (!userData.length) {
     let params = {
       name: userName,
@@ -52,10 +55,6 @@ async function createUserData(userName, password) {
   } else {
     return null;
   }
-}
-
-async function getUserData(condition) {
-  return await db.User.findAll(condition);
 }
 
 module.exports = router;

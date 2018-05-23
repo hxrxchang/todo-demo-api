@@ -4,7 +4,8 @@ const db = require('../../models');
 
 router.post('/', (req, res) => {
   let userId = req.body.userId;
-  let ASC_or_DESC = req.body.ASC_or_DESC;
+  // 昇順か降順
+  let orderBy = req.body.ASC_or_DESC;
   let condition = {
     where: {
       user_id: userId,
@@ -12,7 +13,7 @@ router.post('/', (req, res) => {
       is_deleted: false,
     },
     order: [
-      ['created_at', ASC_or_DESC]
+      ['created_at', orderBy]
     ]
   };
 
