@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models');
+const jwt = require('jsonwebtoken');
 
 router.post('/', (req, res) => {
   let userName = req.body.userName;
@@ -47,10 +48,13 @@ async function createUserData(userName, password) {
 
   // ユーザーデータがなければ、ユーザーを作成。あればnullを返す。
   if (!userData.length) {
+    let token = jwt.sign({ userToken: userName }, 'test');
     let params = {
       name: userName,
-      password
+      password,
+      token
     };
+
     return await db.User.create(params);
   } else {
     return null;
